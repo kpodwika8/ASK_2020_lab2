@@ -5,13 +5,24 @@ jobs:
   build-and-test:
     executor:
       name: node/default
-    working_directory: ~/ASK_2020_lab2/server/
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
+      - node/install-packages:
+          app-dir: ./server
+      - run:
+          command: npm install
+          working_directory: ./server
+      - run:
+          command: npm test
+          working_directory: ./server
+      - run:
+          command: npm install
+          working_directory: ./client
+      - run:
+          command: npm test
+          working_directory: ./client
+      
+            
 workflows:
     build-and-test:
       jobs:
