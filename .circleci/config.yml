@@ -56,10 +56,7 @@ jobs:
            command: |
               echo "$DOCKERHUB_PASSWORD" | docker login -u "mserwaczak" --password-stdin
               sudo docker build ./client -t mserwaczak/cra-client
-              sudo docker push mserwaczak/cra-client
-          
-            
-      
+              sudo docker push mserwaczak/cra-client  
             
 workflows:
     build-and-test:
